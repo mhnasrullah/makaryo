@@ -9,11 +9,11 @@ const AuthButton = () => {
         <>
             <Button
             className="w-full lg:w-fit lg:h-fit"
-            type="primary"
+            mode="primary"
             >Masuk</Button>
             <Button
             className="w-full mt-2 lg:mt-0 lg:w-fit lg:h-fit"
-            type="secondary"
+            mode="secondary"
             >Daftar</Button>
         </>
     )
@@ -24,7 +24,7 @@ const Navbar = () => {
     const [show,setShow] = useState(false);
 
     return (
-        <nav className="py-2">
+        <nav className={`py-2 fixed z-10 w-full ${show ? 'bg-white shadow-lg lg:shadow-none' : 'bg-transparent'}`}>
             <Box className="lg:grid lg:grid-cols-3">
                 {/* Left side n nav on mobile */}
                 <div className="flex justify-between items-center">
@@ -37,7 +37,7 @@ const Navbar = () => {
                     </button>
                 </div>
                 {/* middle side n content nav on mobile */}
-                <div className={`font-semibold text-sm flex-col lg:flex-row lg:space-y-0 lg:space-x-6 space-y-4 py-6 ${show ? 'flex' : 'hidden lg:flex'}`}>
+                <div className={`${show ? 'bg-white relative' : 'bg-transparent'} font-semibold text-sm flex-col lg:flex-row lg:space-y-0 lg:space-x-6 space-y-4 py-6 ${show ? 'flex' : 'hidden lg:flex'}`}>
                     <button className="text-blue">Beranda</button>
                     <button>Kategori</button>
                     <button>Pekerjaan</button>
