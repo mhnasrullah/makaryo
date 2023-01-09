@@ -11,7 +11,7 @@ const Button : FC<PropsWithChildren<Props>> = ({children,mode,className,...props
     if(mode === "listKeyword"){
         return (
             <button 
-            className={`py-2 bg-lightBlue font-medium text-blue px-4 rounded-sm text-sm ${className ? className : ' '}`}
+            className={`p-2 bg-lightBlue font-semibold text-blue rounded-lg text-sm ${className ? className : ' '}`}
             {...props}>{children}</button>
         )
     }

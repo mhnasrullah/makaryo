@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from "react";
 
 interface Props {
-    _for : "BigText",
+    _for : "BigText" | "Heading",
     color : "black" | "white",
     direction? : "left" | "center",
     className? : string
@@ -16,8 +16,8 @@ const Text:FC<PropsWithChildren<Props>> = ({
     const textColor = `text-${color}`
 
     switch (_for){
-        case "BigText" : return <h1 className={`${textColor} text-4xl lg:text-5xl lg:leading-[1.5] leading-[1.5] font-black ${className ? className : " "}`}>{children}</h1>
-            
+        case "BigText" : return <h1 className={`${textColor} text-4xl lg:text-5xl lg:leading-[1.5] leading-[1.5] font-black ${className ? className : " "}`}>{children}</h1>;
+        case "Heading" : return <h1 className={`${textColor} text-xl lg:text-4xl font-extrabold ${className ? className : " "}`}>{children}</h1>
     }
 
 }

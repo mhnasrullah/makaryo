@@ -12,7 +12,7 @@ const Input:FC<Props> = ({searchIcons,full,className,...props}) => {
                 <img src={"/assets/icons/Search.svg"} className="w-5 mr-2" alt="search" />
             )}
             <input
-            className='outline-none placeholder:text-gray text-sm w-full'
+            className='outline-none text-black placeholder:text-gray text-sm w-full'
             {...props}/>
         </div>
     )

@@ -1,0 +1,50 @@
+[
+    {
+        "logo" : "/assets/logos/google.svg",
+        "baseColor" : "#EBF1F8",
+        "position" : "Game Developer",
+        "location" : "Jakarta Pusat",
+        "description" : "Collaborate with game designers/level designers/animators so as to discuss the constraints and establish the technical po ...",
+        "specification" : ["Fulltime","Min. 1 years","Junior Level"]
+    },
+    {
+        "logo" : "/assets/logos/gojek.svg",
+        "baseColor" : "#4DB7491A",
+        "position" : "UI/UX Designer",
+        "location" : "Jakarta Pusat",
+        "description" : "Experience with designing and deliver excellent products, highly usable interface, user-friendly and best user experience ...",
+        "specification" : ["Fulltime","Min. 2 years","Middle Level"]
+    },
+    {
+        "logo" : "/assets/logos/bukalapak.svg",
+        "baseColor" : "#E024551A",
+        "position" : "Digital Marketing",
+        "location" : "Surabaya",
+        "description" : "Responsible for online marketing campaign execution, including Organic (Funnel Conversion, ASO & SEO), Paid , social me ...",
+        "specification" : ["Fulltime","Min. 1 years","Junior Level"]
+    },
+    {
+        "logo" : "/assets/logos/shoppe.svg",
+        "baseColor" : "#EF4E2D1A",
+        "position" : "Android Developer",
+        "location" : "Jakarta Pusat",
+        "description" : "Suggest improvements whenever necessary by designing and implementing new systems or modifying existing systems ...",
+        "specification" : ["Fulltime","Min. 3 years","Senior Level"]
+    },
+    {
+        "logo" : "/assets/logos/tokopedia.svg",
+        "baseColor" : "#4F9D4D1A",
+        "position" : "IT Network",
+        "location" : "Jakarta Selatan",
+        "description" : "Build an integrated proposal consisting of the company profile, solution diagram, sizing consideration, project timeline, migratio ...",
+        "specification" : ["Fulltime","Min. 1 years","Junior Level"]
+    },
+    {
+        "logo" : "/assets/logos/traveloka.svg",
+        "baseColor" : "#EBF1F8",
+        "position" : "Graphic Designer",
+        "location" : "Jakarta Barat",
+        "description" : "Work closely with the Creative Director and Creative Team on creative projects Take charge of creative projects and pro ...",
+        "specification" : ["Parttime","Min. 2 years","Middle Level"]
+    }
+]
