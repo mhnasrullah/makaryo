@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, FC, PropsWithChildren } from "react"
 
 interface Props extends ComponentPropsWithRef<"button"> {
-    mode : "primary" | "secondary" | "listKeyword",
+    mode : "primary" | "secondary" | "listKeyword" | "ternary",
     className? : string
 }
 const Button : FC<PropsWithChildren<Props>> = ({children,mode,className,...props}) => {
@@ -22,6 +22,9 @@ const Button : FC<PropsWithChildren<Props>> = ({children,mode,className,...props
             break;
         case "secondary" :
             styleType = "bg-transparent border-blue text-blue";
+            break;
+        case "ternary" :
+            styleType = "bg-white border-white text-blue";
             break;
         default : styleType = " "
     }

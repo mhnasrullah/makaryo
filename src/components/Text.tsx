@@ -3,13 +3,11 @@ import { FC, PropsWithChildren } from "react";
 interface Props {
     _for : "BigText" | "Heading",
     color : "black" | "white",
-    direction? : "left" | "center",
     className? : string
 }
 
 const Text:FC<PropsWithChildren<Props>> = ({
         _for,
-        direction = "left",
         color,children,className
     }) => {
         
