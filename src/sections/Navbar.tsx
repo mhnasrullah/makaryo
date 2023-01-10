@@ -38,7 +38,7 @@ const Navbar = () => {
     })
 
     return (
-        <nav className={`py-2 fixed z-10 w-full  ${show || !bgTrans ? 'bg-white shadow-lg lg:shadow-none' : 'bg-transparent'}`}>
+        <nav className={`py-2 fixed z-50 w-full  ${show || !bgTrans ? 'bg-white shadow-lg lg:shadow-none' : 'bg-transparent'}`}>
             <Box className="lg:grid lg:grid-cols-3">
                 {/* Left side n nav on mobile */}
                 <div className="flex justify-between items-center">
