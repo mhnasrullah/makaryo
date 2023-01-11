@@ -5,13 +5,12 @@ import Button from "../components/Button"
 const Offer = () => {
   return (
     <section className="py-10 pt-24">
-        <Box >
-            <div className="bg-blue rounded-lg px-5 lg:px-0 lg:py-10 py-8 w-full md:flex md:items-center md:justify-between relative">
+        <Box className="relative">
+            <img src="/assets/decorations/dotSet.svg" className='absolute z-10 md:w-16 w-14 lg:-bottom-5 lg:-left-6 -bottom-8 -left-8' />
+            <div className="bg-blue rounded-lg px-5 lg:px-0 lg:py-10 py-8 w-full md:flex md:items-center md:justify-between relative overflow-hidden">
 
                 {/* Decoration */}
                 <img src="/assets/decorations/offerdecoration.svg" className="absolute -right-10 -top-10" alt=" "/>
-                <img src="/assets/decorations/dotSet.svg" className='absolute md:w-16 w-14 lg:-bottom-5 lg:-left-6 -bottom-8 -left-8' />
-
                 {/* -- */}
                 <div className="md:w-4/5 lg:pl-12">
                     <h1 className="text-pureWhite text-3xl font-semibold">Yuk Mulai  Cari Pekerjaan di Makaryo</h1>
