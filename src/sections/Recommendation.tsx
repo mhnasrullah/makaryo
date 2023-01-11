@@ -6,7 +6,7 @@ import data from "../data/recommendation.json"
 
 const Recommendation = () => {
   return (
-    <section className='py-10'>
+    <section>
         <Box>
             <Text
             _for='Heading'

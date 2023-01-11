@@ -18,10 +18,10 @@ const Button : FC<PropsWithChildren<Props>> = ({children,mode,className,...props
 
     switch (mode) {
         case "primary" :
-            styleType = "bg-blue border-blue text-white";
+            styleType = "bg-blue border-blue text-white hover:bg-[#285792] transition-all hover:border-[#285792]";
             break;
         case "secondary" :
-            styleType = "bg-transparent border-blue text-blue";
+            styleType = "bg-transparent border-blue text-blue hover:border-black transition-all hover:text-black";
             break;
         case "ternary" :
             styleType = "bg-white border-white text-blue";

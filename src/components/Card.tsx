@@ -37,8 +37,6 @@ export const RecommendationCard:FC<Props> = ({data}) => {
         <div className='mt-4'>
             <p className='text-gray text-sm leading-relaxed'>{description}</p>
             <div className='flex flex-wrap mt-4 gap-2'>
-                {console.log(specification)
-                }
                 {specification.map((e : string, i : number)=>(
                     <Button 
                     mode='listKeyword'
@@ -48,7 +46,7 @@ export const RecommendationCard:FC<Props> = ({data}) => {
         </div>
 
         {/* Card footer */}
-        <div className='flex space-x-2 mt-4'>
+        <div className='flex space-y-2 md:space-y-0 md:space-x-2 mt-4 flex-wrap md:flex-nowrap'>
             <Button
             className='w-full'
             mode='secondary'>Tanya dulu</Button>

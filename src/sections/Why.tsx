@@ -1,24 +1,32 @@
-import {FC} from 'react'
+import {FC,useContext,useRef,useEffect, PropsWithRef, ComponentPropsWithRef} from 'react'
 import Box from '../components/Box'
 import Text from '../components/Text'
 import data from '../data/why.json'
 import { motion } from 'framer-motion'
+import { Ctx } from '../utils/context'
 
 interface LogoProps {
     position : string,
     bgColor : string,
-    logo : string
+    logo : string,
+    top : number,
+    translateX? : number,
+    translateY? : number
 }
 
-const LogoDecoration : FC<LogoProps> = ({bgColor,position,logo}) => {
+const LogoDecoration : FC<LogoProps> = ({bgColor,position,logo,top,translateX,translateY}) => {
+    // console.log(translate);
+    
     return (
-        <div
+        <motion.div
         className={`w-fit p-3 rounded-lg absolute z-20 scale-75 ${position}`}
         style={{
-            backgroundColor : bgColor
+            backgroundColor : bgColor,
+            translateX : translateX || 0,
+            translateY : translateY || 0
         }}>
             <img className='w-8' src={`/assets/logos/${logo}.svg`}/>
-        </div>
+        </motion.div>
     )
 }
 
@@ -43,10 +51,19 @@ const ListWhy : FC<ListWhyProps> = ({description,keyword}) => {
     )
 }
 
-const Decoration:FC = () => {
+const Decoration:FC<{top : number | 0}> = ({top}) => {
+    
+    const {windowScroll} = useContext(Ctx)
+    
     return(
         <>
-        <motion.img 
+        <motion.img
+            style={
+                windowScroll > top ? 
+                {
+                translateX : (windowScroll-top)/4
+            } : {}
+            } 
             animate={{
                 scale : [1,1.5,1]
             }}
@@ -55,17 +72,30 @@ const Decoration:FC = () => {
                 ease : "linear",
                 duration : 15,
             }}
-            src="/assets/decorations/ellipse.svg" className='absolute top-0 md:left-[30%] w-6 left-4 lg:right-40 lg:top-0' />
-        <img src="/assets/decorations/dotSet.svg" className='absolute top-2 right-4 md:right-10 z-10 md:top-4 lg:-top-6 lg:right-16 md:w-16 w-14' />
+            src="/assets/decorations/ellipse.svg" className='absolute top-5 md:left-[30%] w-4 md:w-6 left-4 lg:right-40 lg:top-0' />
+        <img 
+        style={{
+            rotate : `${windowScroll/2}deg`,                
+        }} 
+        src="/assets/decorations/dotSet.svg" className='absolute top-2 right-4 md:right-10 z-10 md:top-4 lg:-top-6 lg:right-16 md:w-16 w-14' />
         </>
     )
 }
 
 const Why = () => {
+
+    const ref = useRef<HTMLDivElement>(null)
+    const {windowScroll} = useContext(Ctx)
+    // console.log(, windowScroll)
+
   return (
-    <section className='relative'>
+    <div className='relative pt-24' ref={ref}>
         {/* Decoration */}
-        <Decoration/>
+        {/* ref.current?.offsetTop - ref.current?.offsetHeight */}
+        {ref.current !== null && (
+            <Decoration top={ref.current?.offsetTop - window.innerHeight}/>
+        )}
+        
         {/* -- */}
 
         <Box className='md:flex md:items-center'>
@@ -73,18 +103,28 @@ const Why = () => {
             <div className='md:w-1/2 before:w-5/6 md:before:w-2/3  before:bg-blue before:block before:h-[85%] before:bottom-0 before:right-5 md:before:left-10 before:rounded-xl relative before:absolute'>
                 <img src="/assets/images/whyWoman.png" className='w-5/6 md:w-2/3 relative z-10' alt="woman bring a laptop" />
                 {/* Social logo decoration */}
-                <LogoDecoration
-                bgColor='#EBF1F8'
-                position='top-0 lg:top-8 left-8 md:left-16 md:top-6'
-                logo='google'/>
-                <LogoDecoration
-                bgColor='#F3E3EA'
-                position='-bottom-6 left-12 lg:left-[20%]'
-                logo='bukalapak'/>
-                <LogoDecoration
-                bgColor='#E5F1E9'
-                position='top-16 lg:right-[22%] lg:top-24 right-0 md:right-24'
-                logo='gojek'/>
+                {ref.current !== null && (
+                    <>
+                    <LogoDecoration
+                    translateX={windowScroll > ref.current?.offsetTop - window.innerHeight ? -(windowScroll - (ref.current?.offsetTop - window.innerHeight))/10 : 0}
+                    bgColor='#EBF1F8'
+                    position='top-[6%] lg:top-8 left-[30%] md:left-16 md:top-6'
+                    logo='google'
+                    top={ref.current?.offsetTop - window.innerHeight}/>
+                    <LogoDecoration
+                    translateX={windowScroll > ref.current?.offsetTop - window.innerHeight ? (windowScroll - (ref.current?.offsetTop - window.innerHeight))/10 : 0}
+                    bgColor='#F3E3EA'
+                    position='-bottom-6 left-12 lg:left-[20%]'
+                    logo='bukalapak'
+                    top={ref.current?.offsetTop - window.innerHeight}/>
+                    <LogoDecoration
+                    translateY={windowScroll > ref.current?.offsetTop - window.innerHeight ? (windowScroll - (ref.current?.offsetTop - window.innerHeight))/5 : 0}
+                    bgColor='#E5F1E9'
+                    position='top-16 lg:right-[22%] lg:top-24 right-0 md:right-24'
+                    logo='gojek'
+                    top={ref.current?.offsetTop - window.innerHeight}/>
+                    </>
+                )}
             </div>
 
         {/* Right side */}
@@ -103,7 +143,7 @@ const Why = () => {
                 </div>
             </div>
         </Box>
-    </section>
+    </div>
   )
 }
 

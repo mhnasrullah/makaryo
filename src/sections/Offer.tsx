@@ -4,7 +4,7 @@ import Button from "../components/Button"
 
 const Offer = () => {
   return (
-    <section className="py-10">
+    <section className="py-10 pt-24">
         <Box >
             <div className="bg-blue rounded-lg px-5 lg:px-0 lg:py-10 py-8 w-full md:flex md:items-center md:justify-between relative">
 

@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import Box from '../components/Box'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import Text from '../components/Text'
 import { motion } from 'framer-motion'
+import { Ctx } from '../utils/context'
 
-const Decoration = () => (
-    <>
-        <img src="/assets/decorations/roundLine.svg" className='absolute -top-10 -left-10 w-[200px]'/>
+const Decoration = () => {
+    const {windowScroll} = useContext(Ctx)
+
+        return (
+        <>
+            <img src="/assets/decorations/roundLine.svg" className='absolute -top-24 -left-10 w-[200px]'/>
             <motion.img 
+            style={{
+                translateY : 0-windowScroll
+            }}
             animate={{
                 rotate : '360deg',
                 scale : [1,1.5,1]
@@ -18,9 +25,16 @@ const Decoration = () => (
                 ease : "linear",
                 duration : 30,
             }}
-            src="/assets/decorations/rectangle.svg" className='absolute hidden md:block top-56 left-10'/>
-            <img src="/assets/decorations/dotSet.svg" className='absolute bottom-4 left-4 md:bottom-32 lg:bottom-40 lg:left-16 md:left-8 md:w-16 w-14' />
+            src="/assets/decorations/rectangle.svg" className='absolute hidden w-8 md:block top-56 left-10'/>
+            <img
+            style={{
+                rotate : `${windowScroll/2}deg`,                
+            }} 
+            src="/assets/decorations/dotSet.svg" className='absolute bottom-4 left-4 md:bottom-32 lg:bottom-40 lg:left-16 md:left-8 md:w-16 w-14' />
             <motion.img 
+            style={{
+                translateX : 0-windowScroll
+            }}
             animate={{
                 scale : [1,1.5,1]
             }}
@@ -29,8 +43,12 @@ const Decoration = () => (
                 ease : "linear",
                 duration : 15,
             }}
-            src="/assets/decorations/ellipse.svg" className='absolute bottom-80 w-6 right-4 lg:right-40 lg:bottom-0 lg:top-32' />
-            <motion.img 
+            src="/assets/decorations/ellipse.svg" className='absolute bottom-80 w-4 md:w-6 right-4 lg:right-40 lg:bottom-0 lg:top-32' />
+            <motion.img
+            style={{
+                translateX : 0-windowScroll/2,
+                translateY : 0-windowScroll/2
+            }} 
             animate={{
                 rotate : '360deg',
                 scale : [1,1.5,1]
@@ -40,19 +58,21 @@ const Decoration = () => (
                 ease : "linear",
                 duration : 30,
             }}
-            src="/assets/decorations/triangle.svg" className='absolute bottom-36 w-6 right-10' />
-    </>
-)
+            src="/assets/decorations/triangle.svg" className='absolute bottom-32 w-4 md:w-6 right-10' />
+        </>
+    )}
+    
 
 const Header = () => {
 
-    const [inputValue,setInputValue] = useState("")
+    const ref = useRef< HTMLDivElement >(null);
+    const [inputValue,setInputValue] = useState("");
 
     // setValue on input when keyword selected
     const keywordSelection = (e : string) => setInputValue(e);
 
   return (
-    <section className='py-10 lg:py-0 lg:pt-10 relative'>
+    <div className='py-24 lg:py-0 lg:pt-10 relative' ref={ref}>
         {/* Decoration */}
         <Decoration/>
         {/* -- */}
@@ -104,7 +124,7 @@ const Header = () => {
             </div>
 
         </Box>
-    </section>
+    </div>
   )
 }
 
